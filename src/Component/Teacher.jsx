@@ -90,6 +90,7 @@ const Teacher = () => {
               </div>
             );
           })}
+          
         </section>
       </div>
 
