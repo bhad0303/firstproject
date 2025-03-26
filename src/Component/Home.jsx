@@ -9,7 +9,7 @@ const intialeState = {
 };
 
 const reducer = (state, action) => {
-    if(action.type=='stop'){
+    if(action.type==='stop'){
       
          return {...state,loading:false};
     }

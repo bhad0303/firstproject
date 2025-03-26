@@ -1,101 +1,84 @@
 import Nav from "./Nav";
 import Footer from "./Footer";
+import { useEffect, useState } from "react";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const Teacher = () => {
-  const users = [
-    {
-      image: "./images/a.jpg",
-      name: "Rahul Singh",
-      qua: "MCA (Indus University)",
-    },
-    {
-      image: "./images/b.jpg",
-      name: "Anjali Sharma",
-      qua: "B.Tech (IIT Delhi)",
-    },
-    {
-      image: "./images/c.jpg",
-      name: "Vikram Patel",
-      qua: "MBA (IIM Ahmedabad)",
-    },
-    {
-      image: "./images/d.jpg",
-      name: "Sanya Verma",
-      qua: "B.Sc (Delhi University)",
-    },
-    {
-      image: "./images/e.jpg",
-      name: "Arjun Mehta",
-      qua: "M.Tech (BITS Pilani)",
-    },
-    {
-      image: "./images/f.jpg",
-      name: "Neha Kapoor",
-      qua: "BCA (Christ University)",
-    },
-    { image: "./images/g.jpg", name: "Rajesh Kumar", qua: "PhD (JNU)" },
-    {
-      image: "./images/h.jpg",
-      name: "Priya Desai",
-      qua: "M.Sc (Mumbai University)",
-    },
-    { image: "./images/i.jpg", name: "Amit Tiwari", qua: "BBA (Symbiosis)" },
-    {
-      image: "./images/j.jpg",
-      name: "Suresh Reddy",
-      qua: "MCA (Osmania University)",
-    },
-    {
-      image: "./images/k.jpg",
-      name: "Ritika Chauhan",
-      qua: "BA (Amity University)",
-    },
-    { image: "./images/l.jpg", name: "Manoj Joshi", qua: "B.Com (DU)" },
-  ];
+  let [teacherData, setTeacherData] = useState([{}]);
+  let [loader, setLoader] = useState(true);
+
+  useEffect(() => {
+    setLoader(true);
+    fetch("https://api.escuelajs.co/api/v1/users?limit=12")
+      .then((result) => result.json())
+      .then((data) => {
+        setTeacherData(data);
+        console.log(data);
+        setTimeout(() => {
+          setLoader(false);
+        }, 1000);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
-    <div>
-      <Nav />
-      <div  style={{
-          width: "80%",
-          margin: "0 auto",
-      }}>
-        <header
-          style={{
-           
-            textAlign: "center",
-          }}
-        >
-          <h1>Our Teachers</h1>
-        </header>
-
-        <section
+    <>
+      {loader ? (
+        <div
           style={{
             display: "flex",
-            flexWrap: "wrap",
-            rowGap: "3rem",
-            columnGap: "2%",
-            justifyContent :'center',
-            padding : '3rem 0'
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100vh",
+            background: "#ffd8d8",
           }}
         >
-          {users.map((el, index) => {
-            return (
-              <div style={{
-                width : '22%'
-              }}>
-                <img src={el.image} alt=""  style={{width:'100%'}}/>
-                <h2 style={{padding:0,margin:0,marginTop:'1rem'}}>{el.name}</h2>
-                <p  style={{padding:0,margin:0}}> {el.qua}</p>
-              </div>
-            );
-          })}
-          
-        </section>
-      </div>
+          <CircularProgress />
+        </div>
+      ) : (
+        <div>
+          <Nav />
+          <div style={{ width: "80%", margin: "0 auto" }}>
+            <header style={{ textAlign: "center" }}>
+              <h1>Our Teachers</h1>
+            </header>
 
-      <Footer />
-    </div>
+            <section
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                rowGap: "3rem",
+                columnGap: "2%",
+                justifyContent: "center",
+                padding: "3rem 0",
+              }}
+            >
+              {teacherData.map((el, index) => (
+                <div style={{ width: "22%" }} key={index}>
+                  <img
+                    src={
+                      el.avatar ===
+                      "https://static.wikia.nocookie.net/zelda/images/6/61/Link_TLOZ.png/revision/latest/scale-to-width-down/1000?cb=20191010051128&"
+                        ? "https://gravatar.com/avatar/92e88801013a3ad20425b73d49f83988?s=400&d=robohash&r=x"
+                        : el.avatar
+                    }
+                    alt="Teacher Avatar"
+                    style={{ width: "100%" }}
+                  />
+                  <h2 style={{ padding: 0, margin: 0, marginTop: "1rem" }}>
+                    {el.name}
+                  </h2>
+                  <p style={{ padding: 0, margin: 0 }}>{el.email}</p>
+                </div>
+              ))}
+            </section>
+          </div>
+          <Footer />
+        </div>
+      )}
+    </>
   );
 };
 
