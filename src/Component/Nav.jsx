@@ -21,12 +21,13 @@ function Nav() {
           }}
         >
           <img
-            src="/images/logo.png"
+            src="https://img.freepik.com/premium-vector/ecommerce-logo-design_624194-152.jpg"
             style={{
               width: "5rem",
+              borderRadius : '50%'
             }}
           />
-          <h2>Codeschool</h2>
+          <h2>SwiftCart</h2>
         </div>
 
         <div
@@ -51,13 +52,13 @@ function Nav() {
               </Link>
             </li>
             <li>
-              <Link to="/teachers" style={{ textDecoration: "none",color : 'white' }}>
-                Teachers
+              <Link to="/product" style={{ textDecoration: "none",color : 'white' }}>
+                Product
               </Link>
             </li>
             <li>
-              <Link to="/holidays" style={{ textDecoration: "none",color : 'white' }}>
-                Holidays
+              <Link to="/add-product" style={{ textDecoration: "none",color : 'white' }}>
+                Add Product
               </Link>
             </li>
 

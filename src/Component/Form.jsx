@@ -5,7 +5,7 @@ function Form(){
 <form  style={{
             display : 'flex',
             flexDirection : 'column',
-            gap : '1.6rem'
+            gap : '2rem'
        }}> 
          <div style= {{
               display : 'flex',

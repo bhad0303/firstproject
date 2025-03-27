@@ -1,32 +1,35 @@
 import Home from "./Component/Home";
-import Teacher from "./Component/Teacher";
-import Holiday from "./Component/Holiday";
+import Product from "./Component/Product";
+import AddProduct from "./Component/AddProduct";
 import NotFound from "./Component/NotFound";
 import Contact from "./Component/Contact";
 import TalkToUs from "./Component/TalkToUs";
-import {
-  HashRouter,
-  StaticRouter,
-  BrowserRouter,
-  Routes,
-  Route,
-} from "react-router-dom";
-import Practice from "./Component/Practice";
-import VideoController from "./Component/VideoController";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Context from "./services/Context";
+import { useState } from "react";
+import ProudctDetails from "./Component/ProudctDetails";
+
 function App() {
+
+
+   const [teacher,setTeacher] = useState(null);
+
+
   return (
     <div>
-      <BrowserRouter location='/'>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/teachers" element={<Teacher />} />
-          <Route path="/holidays" element={<Holiday />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/talk-to-us" element={<TalkToUs />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-      {/* <VideoController/> */}
+      <Context.Provider  value={{teacher,setTeacher}}>
+        <BrowserRouter location="/">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/product" element={<Product />} />
+            <Route path="/add-product" element={<AddProduct />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/talk-to-us" element={<TalkToUs />} />
+            <Route path = '/details' element={<ProudctDetails/>}/>
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </Context.Provider>
     </div>
   );
 }

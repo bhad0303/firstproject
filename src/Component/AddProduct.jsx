@@ -1,7 +1,7 @@
 import Nav from './Nav';
 import Footer from './Footer';
 
-const Contact = () =>{
+const AddProduct = () =>{
      return (
          <div>
             <Nav />
@@ -11,7 +11,7 @@ const Contact = () =>{
              justifyContent : 'center',
              alignItems : 'center'
            }}>
-           <h1> Our Contact </h1>
+           <h1>Add Product </h1>
            </div>
             <Footer />
          </div>
@@ -19,4 +19,4 @@ const Contact = () =>{
 }
 
 
-export default Contact;
+export default AddProduct;

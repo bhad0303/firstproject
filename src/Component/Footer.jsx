@@ -5,7 +5,6 @@ function Footer() {
   return (
     <footer
       style={{
-       
         margin: 0,
         width: "100%",
         padding: "3rem 6rem",
@@ -23,7 +22,13 @@ function Footer() {
           width: "100%",
         }}
       >
-        <h2>Codeschool</h2>
+        <h2
+          style={{
+            marginBottom: "1rem",
+          }}
+        >
+          Codeschool
+        </h2>
         <p>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus
           fugiat at culpa dignissimos vero assumenda, architecto harum quaerat
@@ -37,7 +42,13 @@ function Footer() {
           width: "100%",
         }}
       >
-        <h2>Useful Links</h2>
+        <h2
+          style={{
+            marginBottom: "1rem",
+          }}
+        >
+          Useful Links
+        </h2>
         <ul
           style={{
             listStyle: "none",
@@ -53,17 +64,10 @@ function Footer() {
               to="/teachers"
               style={{ textDecoration: "none", color: "white" }}
             >
-              Teachers
+              Products
             </Link>
           </li>
-          <li>
-            <Link
-              to="/holidays"
-              style={{ textDecoration: "none", color: "white" }}
-            >
-              Holidays
-            </Link>
-          </li>
+
           <li>
             <Link
               to="/contact"
@@ -80,8 +84,7 @@ function Footer() {
               Talk to us
             </Link>
           </li>
-          
-          </ul>
+        </ul>
       </div>
 
       <div
@@ -89,7 +92,13 @@ function Footer() {
           width: "100%",
         }}
       >
-        <h2>Social Links</h2>
+        <h2
+          style={{
+            marginBottom: "1rem",
+          }}
+        >
+          Social Links
+        </h2>
         <ul
           style={{
             listStyle: "none",
@@ -113,7 +122,13 @@ function Footer() {
           width: "80%",
         }}
       >
-        <h2>Enquiry</h2>
+        <h2
+          style={{
+            marginBottom: "1rem",
+          }}
+        >
+          Enquiry
+        </h2>
 
         <Form />
       </div>

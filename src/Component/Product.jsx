@@ -2,10 +2,30 @@ import Nav from "./Nav";
 import Footer from "./Footer";
 import { useEffect, useState } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
+import Contact from "./Contact";
+import { useContext } from "react";
+import context from "../services/Context";
+import { useNavigate } from "react-router-dom";
 
-const Teacher = () => {
+
+
+const Product = () => {
+
+  const {teacher ,setTeacher} = useContext(context);
+  const navigate = useNavigate();
+
   let [teacherData, setTeacherData] = useState([{}]);
   let [loader, setLoader] = useState(true);
+
+
+
+
+ const  onNavigate = (el)=>{
+           setTeacher(el)
+        navigate('/details')
+        
+  }
+
 
   useEffect(() => {
     setLoader(true);
@@ -41,8 +61,8 @@ const Teacher = () => {
         <div>
           <Nav />
           <div style={{ width: "80%", margin: "0 auto" }}>
-            <header style={{ textAlign: "center" }}>
-              <h1>Our Teachers</h1>
+            <header style={{ textAlign: "center" ,margin : '1.5rem 0'}}>
+              <h1>Our Products</h1>
             </header>
 
             <section
@@ -71,6 +91,15 @@ const Teacher = () => {
                     {el.name}
                   </h2>
                   <p style={{ padding: 0, margin: 0 }}>{el.email}</p>
+                  <button style={{
+                      background : 'black',
+                      color : 'white',
+                      border : 'none',
+                      padding : '0.5rem 0.2rem',
+                      borderRadius : '0.2rem',
+                      width : '100%',
+                      margin : '0.5rem 0'
+                  }} onClick={()=>{onNavigate(el)}}>Get Details</button>
                 </div>
               ))}
             </section>
@@ -82,4 +111,4 @@ const Teacher = () => {
   );
 };
 
-export default Teacher;
+export default Product;
